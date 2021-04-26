@@ -1,1 +1,64 @@
-<mxfile host="app.diagrams.net" modified="2021-04-26T08:19:47.555Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" etag="40FuCo53prhtL54obcpv" version="14.3.0" type="github"><diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">7VhZc9MwEP41Hp5gfKRO+ojTpgVCB2ihw6NiK7aI7DWynINfzyqWYzsOOYD0yDQv0a7XK2m/b4/EcPrx/EqQNPoIAeWGbQZzw7kwbNsynR5+Kc2i0Jx1tCIULNBGleKW/aLlm1qbs4BmDUMJwCVLm0ofkoT6sqEjQsCsaTYG3tw1JSFtKW59wtvaexbIqND27G6lv6YsjMqdLfe8eBKT0ljfJItIALOayrk0nL4AkMUqnvcpV8Er43L/bnHPhxP36v3n7Cf56n24u/n2unA2OOSV1RUETeT/dW0XrqeE5zpe+q5yUQZQQJ4EVDkxDceLZMxxaeHyB5VyoQEnuQRUgZARhJAQPgRItd0YEqnNLCXTJHirgEV5xMGfFKoB41zvgZK276GUSQGTFXbKwQoIZczJiHKP+JNwedA+cBD4KIGEKlcBkkHfpTrcZaX19oytxiCDXPh0i52jKU5ESLf5cws7db4aTzVyVxRiKsUCDQTlRLJpk8xE50S4sqtwx4WG/gAaOC0aDEmcqqwHmiWvJK5mICZbuKFwmUVM0tuULAM0w3LS5EudB3hVL+QkyzSKO0A+DKQpFZLOt4a1fOrq3NbFrafFWVUprDL9o1qV6JhHAqLTAuI7Fs+XlPyXlHT3TMmyY+3MSU2Wkhh7p6j29AlYImsmMB5neLB16qw2/Hs2nbXYdAMtMu3G41nT7ZHI1D2MS9aT55L7hxbhcgyDNxK4CtUq5XkYIlnQXWI4g3btiiAe5dnudtHAWDFoQGLGVbyuKZ9SyXyyoakQzkLc98JHuKnYTB7ckiUhSm4l3S3JivX3iM2m22w2K7nebcwN3aZ3rG7TbWH6CdEroLNNvsT3xDq+Y6+BcP7YLb+3T5F+1iX4wTt+WU13t3xrzzKt2WO+cfDTINDTnwLO95opX8aA4zDMPrVBoDxhjU9ezkftSWCUi2Q5CEAuXyaBbZOAvakJPegkUBbCGqhfaEoYgmkOT3EOWP/l33Eeew4oK0UTAq5iaptFhp0YBuuzmGMdDwMUq39qi1JY/d/tXP4G</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-04-26T08:58:34.638Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" etag="MAjYIXaw0Wq41YmPLORG" version="14.3.0" type="github">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="716" dy="378" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-2" value="" style="rounded=0;html=1;jettySize=auto;orthogonalLoop=1;fontSize=11;endArrow=classic;endFill=1;endSize=8;strokeWidth=1;shadow=0;labelBackgroundColor=none;edgeStyle=orthogonalEdgeStyle;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="WIyWlLk6GJQsqaUBKTNV-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="170" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="220" y="170" />
+              <mxPoint x="220" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-3" value="Servern startar" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="160" y="80" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="kZL8lAT23t1o3Kd6HeP2-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="WIyWlLk6GJQsqaUBKTNV-7" target="WIyWlLk6GJQsqaUBKTNV-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-7" value="Vänta på connection" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="160" y="170" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="kZL8lAT23t1o3Kd6HeP2-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="WIyWlLk6GJQsqaUBKTNV-11" target="kZL8lAT23t1o3Kd6HeP2-0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-11" value="Acceptera connection" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="160" y="260" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="kZL8lAT23t1o3Kd6HeP2-0" value="Börja skicka bilder till klienten" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="160" y="350" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="kZL8lAT23t1o3Kd6HeP2-4" value="" style="rounded=0;html=1;jettySize=auto;orthogonalLoop=1;fontSize=11;endArrow=classic;endFill=1;endSize=8;strokeWidth=1;shadow=0;labelBackgroundColor=none;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="kZL8lAT23t1o3Kd6HeP2-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="360.0000000000001" y="170" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="360" y="170" />
+              <mxPoint x="360" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kZL8lAT23t1o3Kd6HeP2-5" value="Klienten startar" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="300" y="80" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="kZL8lAT23t1o3Kd6HeP2-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="kZL8lAT23t1o3Kd6HeP2-7" target="kZL8lAT23t1o3Kd6HeP2-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="kZL8lAT23t1o3Kd6HeP2-7" value="Visa en JOptionPane, låt användaren skirva in IP och Port" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="300" y="170" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="kZL8lAT23t1o3Kd6HeP2-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="kZL8lAT23t1o3Kd6HeP2-9" target="kZL8lAT23t1o3Kd6HeP2-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="kZL8lAT23t1o3Kd6HeP2-9" value="Försök ansluta till IP och Port" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="300" y="260" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="kZL8lAT23t1o3Kd6HeP2-10" value="Visa serverns skärm i en JFrame" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="300" y="350" width="120" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
