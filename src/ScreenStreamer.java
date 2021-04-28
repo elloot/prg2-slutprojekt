@@ -1,8 +1,10 @@
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.ByteBuffer;
 
 public class ScreenStreamer implements Runnable {
     private OutputStream out;
@@ -56,6 +58,11 @@ public class ScreenStreamer implements Runnable {
     }
 
     private void sendScreen(BufferedImage im) throws IOException {
-        ImageIO.write(im, "JPEG", out);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ImageIO.write(im, "JPEG", byteArrayOutputStream);
+        byte[] size = ByteBuffer.allocate(4).putInt(byteArrayOutputStream.size()).array();
+        out.write(size);
+        out.write(byteArrayOutputStream.toByteArray());
+        out.flush();
     }
 }
