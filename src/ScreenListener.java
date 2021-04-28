@@ -3,6 +3,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
 
 public class ScreenListener implements Runnable {
     private InputStream in;
@@ -18,20 +19,25 @@ public class ScreenListener implements Runnable {
     public void run() {
         running = true;
         while(running) {
-            byte[] data;
+            byte[] imageAr;
+            byte[] sizeAr = new byte[4];
             try {
-                data = in.readAllBytes();
+                in.read(sizeAr);
+                int size = ByteBuffer.wrap(sizeAr).asIntBuffer().get();
+                imageAr = new byte[size];
+                in.read(imageAr);
+                System.out.println("Attempting to read data");
             } catch (IOException e) {
-                data = new byte[0];
+                imageAr = new byte[0];
                 System.out.println("Failed to read image from server, exiting");
                 e.printStackTrace();
                 System.exit(0);
             }
             BufferedImage screenShot;
             try {
-                screenShot = ImageIO.read(new ByteArrayInputStream(data));
+                screenShot = ImageIO.read(new ByteArrayInputStream(imageAr));
             } catch (IOException e) {
-                screenShot = new BufferedImage(0, 0, BufferedImage.TYPE_INT_RGB);
+                screenShot = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
                 System.out.println("Failed to convert bytes to image, exiting");
                 e.printStackTrace();
                 System.exit(0);
