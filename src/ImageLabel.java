@@ -15,6 +15,7 @@ class ImageLabel extends JLabel {
         setIconTextGap(0);
         setBorder(null);
         setText(null);
+        setSize(100, 100);
     }
 
     public void setImage(BufferedImage im) {
