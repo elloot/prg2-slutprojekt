@@ -13,6 +13,7 @@ public class Server {
         } catch (IOException e) {
             System.out.println("Failed to connect on port " + port);
             e.printStackTrace();
+            System.exit(0);
         }
     }
 }
