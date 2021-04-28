@@ -15,5 +15,6 @@ public class Server {
             e.printStackTrace();
             System.exit(0);
         }
+        System.out.println("Connection established");
     }
 }
