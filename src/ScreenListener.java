@@ -7,9 +7,11 @@ import java.io.InputStream;
 public class ScreenListener implements Runnable {
     private InputStream in;
     private boolean running;
+    private Client client;
 
-    public ScreenListener(InputStream i) {
+    public ScreenListener(InputStream i, Client c) {
         in = i;
+        client = c;
     }
 
     @Override
@@ -27,8 +29,10 @@ public class ScreenListener implements Runnable {
             try {
                 screenShot = ImageIO.read(new ByteArrayInputStream(data));
             } catch (IOException e) {
+                screenShot = new BufferedImage(0, 0, BufferedImage.TYPE_INT_RGB);
                 e.printStackTrace();
             }
+            client.updateScreen(screenShot);
         }
     }
 }
