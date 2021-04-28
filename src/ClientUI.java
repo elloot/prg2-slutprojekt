@@ -14,4 +14,9 @@ public class ClientUI {
         frame.pack();
         frame.setVisible(true);
     }
+
+    public void updateScreen(BufferedImage im) {
+        screen.setImage(im);
+        screen.repaint();
+    }
 }
