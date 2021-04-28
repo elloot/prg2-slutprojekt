@@ -1,10 +1,13 @@
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.Socket;
 
 public class Client {
     private Socket socket;
+    private ClientUI ui;
 
     public Client(int port, String ip) {
+        ui = new ClientUI();
         try {
             socket = new Socket(ip, port);
         } catch(IOException e) {
@@ -13,5 +16,9 @@ public class Client {
             System.exit(0);
         }
         System.out.println("Connection established");
+    }
+
+    public void updateScreen(BufferedImage im) {
+        ui.updateScreen(im);
     }
 }
