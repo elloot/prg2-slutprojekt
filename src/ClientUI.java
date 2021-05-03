@@ -1,15 +1,12 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.nio.Buffer;
-import java.util.Arrays;
 
 public class ClientUI {
     private JPanel panel;
     private ImageLabel screen;
 
     public ClientUI(BufferedImage image) {
+        panel = new JPanel();
         screen = new ImageLabel(image);
         screen.setLocation((1920/2)/2, (1080/2) / 2);
         panel.add(screen);
