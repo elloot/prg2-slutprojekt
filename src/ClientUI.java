@@ -1,11 +1,10 @@
 import javax.swing.*;
-import java.awt.image.BufferedImage;
 
 public class ClientUI {
     private JPanel panel;
     private ImageLabel screen;
 
-    public ClientUI(BufferedImage image) {
+    public ClientUI(ImageIcon image) {
         panel = new JPanel();
         screen = new ImageLabel(image);
         screen.setLocation((1920/2)/2, (1080/2) / 2);
@@ -19,7 +18,7 @@ public class ClientUI {
         frame.setVisible(true);
     }
 
-    public void updateScreen(BufferedImage im) {
+    public void updateScreen(ImageIcon im) {
         screen.setImage(im);
         screen.repaint();
     }
