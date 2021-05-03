@@ -1,6 +1,8 @@
-# prg2-slutprojekt
+# Slutprojekt Programmering 2
 
-TeamViewer-klon, den styrda datorn skickar en bild av skärmen hela tiden som datorn som styr tar emot. Datorn som styr skickar musens nuvarande position/om den klickar, detta gör att datorn som styrs gör något med Robot-klassen. Ta en bild av skärmen med Robot.createScreenCapture(), konvertera sedan det till en videoström som skickas genom en socket.
+## Beskrivning
+
+En TeamViewer-klon som låter en användare styra en annan användares dator. Den dator som styrs skickar en ström av bilder på datorns skärm som den styrande datorn tar emot och visar upp. Den styrande datorn skickar mus-information till den styrda datorn som översätter detta med Javas Robot-klass.
 
 ## Planering och dokumentation
 * [Planering](https://github.com/elloot/prg2-slutprojekt/projects/1)
