@@ -69,8 +69,12 @@ public class ScreenStreamer implements Runnable {
     }
 
     private ImageIcon compressToImageIcon (BufferedImage im) throws IOException {
+        return new ImageIcon(compressToByteArray(im));
+    }
+
+    private byte[] compressToByteArray (BufferedImage im) throws IOException {
         ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
         ImageIO.write(im, "JPEG", byteOut);
-        return new ImageIcon(byteOut.toByteArray());
+        return byteOut.toByteArray();
     }
 }
