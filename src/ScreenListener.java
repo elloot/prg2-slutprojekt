@@ -1,17 +1,19 @@
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
+import javax.swing.*;
+import java.io.*;
 
 public class ScreenListener implements Runnable {
-    private InputStream in;
+    private ObjectInputStream in;
     private boolean running;
     private Client client;
 
     public ScreenListener(InputStream i, Client c) {
-        in = i;
+        try {
+            in = new ObjectInputStream(i);
+        } catch (IOException e) {
+            System.out.println("Failed to create input stream, exiting");
+            e.printStackTrace();
+            System.exit(0);
+        }
         client = c;
     }
 
@@ -19,29 +21,17 @@ public class ScreenListener implements Runnable {
     public void run() {
         running = true;
         while(running) {
-            byte[] imageAr;
-            byte[] sizeAr = new byte[4];
+            Object im;
             try {
-                in.read(sizeAr);
-                int size = ByteBuffer.wrap(sizeAr).asIntBuffer().get();
-                imageAr = new byte[size];
-                in.read(imageAr);
+                im = in.readObject();
                 System.out.println("Attempting to read data");
-            } catch (IOException e) {
-                imageAr = new byte[0];
+            } catch (ClassNotFoundException | IOException e) {
+                im = null;
                 System.out.println("Failed to read image from server, exiting");
                 e.printStackTrace();
                 System.exit(0);
             }
-            BufferedImage screenShot;
-            try {
-                screenShot = ImageIO.read(new ByteArrayInputStream(imageAr));
-            } catch (IOException e) {
-                screenShot = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
-                System.out.println("Failed to convert bytes to image, exiting");
-                e.printStackTrace();
-                System.exit(0);
-            }
+            ImageIcon screenShot = (ImageIcon) im;
             client.updateScreen(screenShot);
         }
     }

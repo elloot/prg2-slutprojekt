@@ -1,20 +1,27 @@
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-import java.nio.ByteBuffer;
 
 public class ScreenStreamer implements Runnable {
-    private OutputStream out;
+    private ObjectOutputStream out;
     private Rectangle screenBounds;
     private Robot robot;
-    private int fps = 30;
+    private int fps = 15;
     private boolean running;
 
     public ScreenStreamer(OutputStream o) {
-        out = o;
+        try {
+            out = new ObjectOutputStream(o);
+        } catch (IOException e) {
+            System.out.println("Failed to create output stream, exiting");
+            e.printStackTrace();
+            System.exit(0);
+        }
         screenBounds = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
         try {
             robot = new Robot();
@@ -60,9 +67,7 @@ public class ScreenStreamer implements Runnable {
     private void sendScreen(BufferedImage im) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ImageIO.write(im, "JPEG", byteArrayOutputStream);
-        byte[] size = ByteBuffer.allocate(4).putInt(byteArrayOutputStream.size()).array();
-        out.write(size);
-        out.write(byteArrayOutputStream.toByteArray());
-        out.flush();
+        ImageIcon imageIcon = new ImageIcon(byteArrayOutputStream.toByteArray());
+        out.writeObject(imageIcon);
     }
 }
