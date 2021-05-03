@@ -1,4 +1,4 @@
-import java.awt.image.BufferedImage;
+import javax.swing.*;
 import java.io.IOException;
 import java.net.Socket;
 
@@ -28,7 +28,7 @@ public class Client {
         listenerThread.start();
     }
 
-    public void updateScreen(BufferedImage im) {
+    public void updateScreen(ImageIcon im) {
         if (ui == null) {
             ui = new ClientUI(im);
         }
