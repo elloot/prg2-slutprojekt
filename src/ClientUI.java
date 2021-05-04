@@ -6,20 +6,25 @@ import java.awt.event.ComponentEvent;
 public class ClientUI {
     private JPanel panel;
     private ImageLabel screen;
+    private JFrame frame;
 
     public ClientUI(ImageIcon image) {
         panel = new JPanel();
         screen = new ImageLabel(image);
-        screen.setLocation((1920/2)/2, (1080/2) / 2);
+        screen.setLocation(0, 0);
         panel.add(screen);
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1920/2, 1080/2);
+        frame.setSize(1920, 1080);
         frame.getContentPane().add(panel);
         frame.setLocationRelativeTo(null);
         frame.pack();
         frame.addComponentListener(new ResizeListener());
         frame.setVisible(true);
+    }
+
+    public Rectangle getBounds() {
+        return frame.getBounds();
     }
 
     public void updateScreen(ImageIcon im) {
