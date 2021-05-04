@@ -24,7 +24,6 @@ public class ScreenListener implements Runnable {
             Object im;
             try {
                 im = in.readObject();
-                System.out.println("Attempting to read data");
             } catch (ClassNotFoundException | IOException e) {
                 im = null;
                 System.out.println("Failed to read image from server, exiting");
