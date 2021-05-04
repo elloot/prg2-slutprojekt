@@ -66,6 +66,7 @@ public class ScreenStreamer implements Runnable {
 
     private void sendScreen(BufferedImage im) throws IOException {
         out.writeObject(compressToImageIcon(im));
+        out.flush();
     }
 
     private ImageIcon compressToImageIcon (BufferedImage im) throws IOException {
