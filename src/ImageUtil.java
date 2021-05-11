@@ -9,7 +9,7 @@ public class ImageUtil {
         return new ImageIcon(Scalr.resize(toBufferedImage(im), w, h));
     }
 
-    private static BufferedImage toBufferedImage(ImageIcon icon) {
+    public static BufferedImage toBufferedImage(ImageIcon icon) {
         BufferedImage bi = new BufferedImage(
                 icon.getIconWidth(),
                 icon.getIconHeight(),
