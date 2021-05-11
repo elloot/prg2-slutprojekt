@@ -31,9 +31,12 @@ public class Graphics extends Canvas {
         this.requestFocus();
     }
 
-    private void draw() {
+    public void draw(ImageIcon imageIcon) {
         // clears the screen
-        Arrays.fill(pixels, 0xFF0C4056);
+        Arrays.fill(pixels, 0x000000);
+        BufferedImage screen = ImageUtil.toBufferedImage(imageIcon);
+        int[] screenPixels = ((DataBufferInt) screen.getRaster().getDataBuffer()).getData();
+        System.arraycopy(screenPixels, 0, pixels, 0, pixels.length);
 
         BufferStrategy bs = getBufferStrategy();
         if (bs == null) {
