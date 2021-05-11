@@ -14,7 +14,7 @@ public class ImageUtil {
                 icon.getIconWidth(),
                 icon.getIconHeight(),
                 BufferedImage.TYPE_INT_RGB);
-        Graphics g = bi.createGraphics();
+        java.awt.Graphics g = bi.createGraphics();
         icon.paintIcon(null, g, 0, 0);
         g.dispose();
         return bi;
