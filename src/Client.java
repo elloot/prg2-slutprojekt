@@ -32,7 +32,7 @@ public class Client {
         if (ui == null) {
             ui = new ClientUI(im);
         }
-        ui.updateScreen(resize(im));
+        ui.updateScreen(im);
     }
 
     public ImageIcon resize(ImageIcon im) {
