@@ -43,11 +43,16 @@ public class ScreenStreamer implements Runnable {
             delta += (now - lastTime) / fpsInterval;
             lastTime = now;
 
+            BufferedImage im;
+            ImageIcon imageIcon = null;
             while(delta >= 1) {
                 try {
-                    BufferedImage im = captureScreen();
-                    sendScreen(im);
+                    im = captureScreen();
+                    sendScreen(im, imageIcon);
+                    im.flush();
                     im = null;
+                    imageIcon.getImage().flush();
+                    imageIcon = null;
                     robot = null;
                     robot = new Robot();
                 } catch (IOException e) {
@@ -71,8 +76,8 @@ public class ScreenStreamer implements Runnable {
         return robot.createScreenCapture(screenBounds);
     }
 
-    private void sendScreen(BufferedImage im) throws IOException {
-        ImageIcon imageIcon = compressToImageIcon(im);
+    private void sendScreen(BufferedImage im, ImageIcon imageIcon) throws IOException {
+        imageIcon = compressToImageIcon(im);
         out.writeObject(imageIcon);
         out.flush();
     }
