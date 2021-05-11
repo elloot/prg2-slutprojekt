@@ -6,12 +6,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.net.SocketException;
 
 public class ScreenStreamer implements Runnable {
     private ObjectOutputStream out;
     private Rectangle screenBounds;
     private Robot robot;
-    private int fps = 15;
+    private int fps = 60;
     private boolean running;
 
     public ScreenStreamer(OutputStream o) {
@@ -44,22 +45,14 @@ public class ScreenStreamer implements Runnable {
             lastTime = now;
 
             BufferedImage im;
-            ImageIcon imageIcon = null;
+            ImageIcon imageIcon;
             while(delta >= 1) {
                 try {
                     im = captureScreen();
-                    sendScreen(im, imageIcon);
-                    im.flush();
-                    im = null;
-                    imageIcon.getImage().flush();
-                    imageIcon = null;
-                    robot = null;
-                    robot = new Robot();
+                    imageIcon = compressToImageIcon(im);
+                    sendScreen(imageIcon);
                 } catch (IOException e) {
                     errorSend(e);
-                } catch (AWTException e) {
-                    e.printStackTrace();
-                    System.out.println("Failed to create robot");
                 }
                 delta--;
             }
@@ -76,10 +69,20 @@ public class ScreenStreamer implements Runnable {
         return robot.createScreenCapture(screenBounds);
     }
 
-    private void sendScreen(BufferedImage im, ImageIcon imageIcon) throws IOException {
-        imageIcon = compressToImageIcon(im);
-        out.writeObject(imageIcon);
-        out.flush();
+    private void sendScreen(ImageIcon imageIcon) throws IOException {
+        try {
+            out.writeObject(imageIcon);
+            out.flush();
+            out.reset();
+        } catch (SocketException e) {
+            if (e.getMessage().equals("Connection reset by peer")) {
+                System.out.println("Client disconnected, exiting");
+                System.exit(0);
+            } else {
+                System.out.println("Something went wrong with the connection to the client");
+                e.printStackTrace();
+            }
+        }
     }
 
     private ImageIcon compressToImageIcon (BufferedImage im) throws IOException {
