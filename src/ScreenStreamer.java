@@ -45,9 +45,16 @@ public class ScreenStreamer implements Runnable {
 
             while(delta >= 1) {
                 try {
-                    sendScreen(captureScreen());
+                    BufferedImage im = captureScreen();
+                    sendScreen(im);
+                    im = null;
+                    robot = null;
+                    robot = new Robot();
                 } catch (IOException e) {
                     errorSend(e);
+                } catch (AWTException e) {
+                    e.printStackTrace();
+                    System.out.println("Failed to create robot");
                 }
                 delta--;
             }
@@ -65,7 +72,8 @@ public class ScreenStreamer implements Runnable {
     }
 
     private void sendScreen(BufferedImage im) throws IOException {
-        out.writeObject(compressToImageIcon(im));
+        ImageIcon imageIcon = compressToImageIcon(im);
+        out.writeObject(imageIcon);
         out.flush();
     }
 
