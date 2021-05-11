@@ -86,7 +86,7 @@ public class ScreenStreamer implements Runnable {
     }
 
     private ImageIcon compressToImageIcon (BufferedImage im) throws IOException {
-        return new ImageIcon(compressToByteArray(im));
+        return new ImageIcon(im);
     }
 
     private byte[] compressToByteArray (BufferedImage im) throws IOException {
