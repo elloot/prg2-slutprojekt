@@ -20,8 +20,9 @@ public class ScreenListener implements Runnable {
     @Override
     public void run() {
         running = true;
+        Object im;
+        ImageIcon screenShot;
         while(running) {
-            Object im;
             try {
                 im = in.readObject();
             } catch (ClassNotFoundException | IOException e) {
@@ -30,7 +31,7 @@ public class ScreenListener implements Runnable {
                 e.printStackTrace();
                 System.exit(0);
             }
-            ImageIcon screenShot = (ImageIcon) im;
+            screenShot = (ImageIcon) im;
             client.updateScreen(screenShot);
         }
     }
