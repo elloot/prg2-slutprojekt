@@ -1,0 +1,49 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
+import java.util.Arrays;
+
+public class Graphics extends Canvas {
+    private final int width;
+    private final int height;
+    private final BufferedImage image;
+    private final int[] pixels;
+
+    public Graphics(int w, int h) {
+        this.width = w;
+        this.height = h;
+        image = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
+
+        Dimension size = new Dimension(width, height);
+        setPreferredSize(size);
+        JFrame frame = new JFrame();
+        String title = "Totally not a TeamViewer ripoff";
+        frame.setTitle(title);
+        frame.add(this);
+        frame.pack();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
+        this.requestFocus();
+    }
+
+    private void draw() {
+        // clears the screen
+        Arrays.fill(pixels, 0xFF0C4056);
+
+        BufferStrategy bs = getBufferStrategy();
+        if (bs == null) {
+            createBufferStrategy(3);
+            return;
+        }
+
+        java.awt.Graphics g = bs.getDrawGraphics();
+        g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+        g.dispose();
+        bs.show();
+    }
+}
