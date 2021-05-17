@@ -59,7 +59,6 @@ class MouseListener implements java.awt.event.MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        System.out.println(e.getClickCount());
     }
 
     @Override
@@ -69,7 +68,6 @@ class MouseListener implements java.awt.event.MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
-
     }
 }
 
