@@ -31,6 +31,13 @@ public class Client {
     public void updateScreen(ImageIcon im) {
         if (ui == null) {
             ui = new ClientUI(im);
+            try {
+                ui.getFrame().addMouseMotionListener(new MouseInfoStreamer(socket.getOutputStream()));
+            } catch (IOException e) {
+                System.out.println("Failed to get output stream from socket, exiting");
+                e.printStackTrace();
+                System.exit(0);
+            }
         }
         ui.updateScreen(im);
     }

@@ -27,6 +27,10 @@ public class ClientUI {
         return frame.getBounds();
     }
 
+    public JFrame getFrame() {
+        return frame;
+    }
+
     public void updateScreen(ImageIcon im) {
         screen.setImage(im);
         screen.repaint();
