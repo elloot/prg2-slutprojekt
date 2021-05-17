@@ -7,6 +7,7 @@ public class Client {
     private ClientUI ui;
     private ScreenListener screenListener;
     private Thread listenerThread;
+    private MouseInfoStreamer mouseStreamer;
 
     public Client(int port, String ip) {
         try {
@@ -24,6 +25,13 @@ public class Client {
             e.printStackTrace();
             System.exit(0);
         }
+        try {
+            mouseStreamer = new MouseInfoStreamer(socket.getOutputStream());
+        } catch (IOException e) {
+            System.out.println("Failed to get output stream from socket, exiting");
+            e.printStackTrace();
+            System.exit(0);
+        }
         listenerThread = new Thread(screenListener);
         listenerThread.start();
     }
@@ -31,13 +39,8 @@ public class Client {
     public void updateScreen(ImageIcon im) {
         if (ui == null) {
             ui = new ClientUI(im);
-            try {
-                ui.getFrame().addMouseMotionListener(new MouseInfoStreamer(socket.getOutputStream()));
-            } catch (IOException e) {
-                System.out.println("Failed to get output stream from socket, exiting");
-                e.printStackTrace();
-                System.exit(0);
-            }
+            ui.getFrame().addMouseListener(mouseStreamer.getMouseListener());
+            ui.getFrame().addMouseMotionListener(mouseStreamer.getMouseMotionListener());
         }
         ui.updateScreen(im);
     }

@@ -5,6 +5,8 @@ import java.io.OutputStream;
 
 public class MouseInfoStreamer {
     private ObjectOutputStream out;
+    private MouseListener mouseListener;
+    private MouseMotionListener mouseMotionListener;
 
     public MouseInfoStreamer(OutputStream o) {
         try {
@@ -14,6 +16,8 @@ public class MouseInfoStreamer {
             e.printStackTrace();
             System.exit(0);
         }
+        mouseListener = new MouseListener(this);
+        mouseMotionListener = new MouseMotionListener(this);
     }
 
     void sendMouseInfo(MouseEvent e) {
@@ -25,6 +29,14 @@ public class MouseInfoStreamer {
             System.out.println("Something went wrong when sending the mouse info");
             ioException.printStackTrace();
         }
+    }
+
+    public MouseListener getMouseListener() {
+        return mouseListener;
+    }
+
+    public MouseMotionListener getMouseMotionListener() {
+        return mouseMotionListener;
     }
 }
 
@@ -62,6 +74,12 @@ class MouseListener implements java.awt.event.MouseListener {
 }
 
 class MouseMotionListener implements java.awt.event.MouseMotionListener {
+    private MouseInfoStreamer mouseStreamer;
+
+    public MouseMotionListener(MouseInfoStreamer m) {
+        mouseStreamer = m;
+    }
+
     @Override
     public void mouseDragged(MouseEvent e) {
 
