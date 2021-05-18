@@ -13,8 +13,8 @@ public class MouseInfo implements Serializable {
         this.eventType = eventType;
         screenBounds = e.getComponent().getBounds();
         location = e.getPoint();
-        locationFromEdge = new Point((location.x / screenBounds.width) * screenBounds.width,
-                (location.y / screenBounds.height) * screenBounds.height);
+        locationFromEdge = new Point((location.x / screenBounds.width),
+                (location.y / screenBounds.height));
         button = e.getButton();
     }
 
