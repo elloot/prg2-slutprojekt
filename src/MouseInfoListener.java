@@ -5,6 +5,7 @@ import java.io.ObjectInputStream;
 public class MouseInfoListener implements Runnable {
     private ObjectInputStream in;
     private Server server;
+    private boolean running;
 
     public MouseInfoListener(InputStream i, Server s) {
         try {
@@ -19,6 +20,20 @@ public class MouseInfoListener implements Runnable {
 
     @Override
     public void run() {
-
+        running = true;
+        while (running) {
+            Object object;
+            MouseInfo mouseInfo;
+            try {
+                object = in.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+                object = null;
+                System.out.println("Something went wrong when reading the mouse info");
+                e.printStackTrace();
+            }
+            mouseInfo = (MouseInfo) object;
+            System.out.println("SHIT");
+            server.handleMouseMove(mouseInfo);
+        }
     }
 }
