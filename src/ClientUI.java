@@ -18,7 +18,6 @@ public class ClientUI {
         frame.getContentPane().add(panel);
         frame.pack();
         frame.setLocationRelativeTo(null);
-        // frame.addComponentListener(new ResizeListener());
         frame.setVisible(true);
     }
 
@@ -37,15 +36,5 @@ public class ClientUI {
     public void updateScreen(ImageIcon im) {
         screen.setImage(im);
         screen.repaint();
-    }
-}
-
-class ResizeListener extends ComponentAdapter {
-    @Override
-    public void componentResized(ComponentEvent e) {
-        final double W = 16;
-        final double H = 9;
-        Rectangle b = e.getComponent().getBounds();
-        e.getComponent().setBounds(b.x, b.y, b.width, (int) (b.width * (H/W)));
     }
 }
