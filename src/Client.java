@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.net.Socket;
 
@@ -42,7 +43,16 @@ public class Client {
             ui.getFrame().addMouseListener(mouseStreamer.getMouseListener());
             ui.getFrame().addMouseMotionListener(mouseStreamer.getMouseMotionListener());
         }
-        ui.updateScreen(im);
+        ui.updateScreen(resizeIcon(im));
+    }
+
+    public ImageIcon resizeIcon(ImageIcon srcIco) {
+        int iconWidth = srcIco.getIconWidth();
+        int iconHeight = srcIco.getIconHeight();
+        double aspectRatio = ((double) iconWidth)/((double)iconHeight);
+        int newWidth = ui.getBounds().width;
+        int newHeight = (int) (newWidth / aspectRatio);
+        return new ImageIcon(ImageUtil.getScaledImage(srcIco.getImage(), newWidth, newHeight));
     }
 
     public ImageIcon resize(ImageIcon im) {
