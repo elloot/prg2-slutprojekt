@@ -53,6 +53,7 @@ public class Server {
     }
 
     public void handleMouseEvent(MouseInfo mouseInfo) {
+        screenStreamer.setClientScreenSize(mouseInfo.getScreenBounds());
         Point location = new Point((int) (mouseInfo.getxFromEdge() * (double) screenSize.width), (int)
                 (mouseInfo.getyFromEdge() * (double) screenSize.height));
         switch (mouseInfo.getEventType()) {
