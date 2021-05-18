@@ -1,3 +1,5 @@
+import org.w3c.dom.css.Rect;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +16,7 @@ public class ScreenStreamer implements Runnable {
     private Robot robot;
     private int fps = 60;
     private boolean running;
+    private Rectangle clientScreenSize;
 
     public ScreenStreamer(OutputStream o) {
         try {
@@ -24,6 +27,7 @@ public class ScreenStreamer implements Runnable {
             System.exit(0);
         }
         screenBounds = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+        clientScreenSize = new Rectangle(screenBounds.width, screenBounds.height);
         try {
             robot = new Robot();
         } catch (AWTException e) {
@@ -71,7 +75,7 @@ public class ScreenStreamer implements Runnable {
 
     private void sendScreen(ImageIcon imageIcon) throws IOException {
         try {
-            out.writeObject(imageIcon);
+            out.writeObject(ImageUtil.getScaledImage(imageIcon.getImage(), clientScreenSize.width, clientScreenSize.height));
             out.flush();
             out.reset();
         } catch (SocketException e) {
@@ -83,6 +87,10 @@ public class ScreenStreamer implements Runnable {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void setClientScreenSize(Rectangle size) {
+        clientScreenSize = size;
     }
 
     private ImageIcon compressToImageIcon (BufferedImage im) throws IOException {
