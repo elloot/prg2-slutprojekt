@@ -32,7 +32,6 @@ public class MouseInfoListener implements Runnable {
                 e.printStackTrace();
             }
             mouseInfo = (MouseInfo) object;
-            System.out.println("SHIT");
             server.handleMouseEvent(mouseInfo);
         }
     }

@@ -54,7 +54,7 @@ public class Server {
     public void handleMouseEvent(MouseInfo mouseInfo) {
         Point location = new Point((int) mouseInfo.getxFromEdge() * screenSize.width, (int)
         mouseInfo.getyFromEdge() * screenSize.height);
-        System.out.println("Handling event");
+        System.out.println(location.x + " " + location.y);
         switch (mouseInfo.getEventType()) {
             case CLICKED -> {
                 robot.mouseMove(location.x, location.y);
