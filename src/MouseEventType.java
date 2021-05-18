@@ -1,5 +1,5 @@
 public enum MouseEventType {
-    CLICK,
+    CLICKED,
     PRESSED,
     RELEASED,
     ENTERED,
