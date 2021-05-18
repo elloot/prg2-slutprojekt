@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.InputEvent;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -57,18 +58,18 @@ public class Server {
         switch (mouseInfo.getEventType()) {
             case CLICKED -> {
                 robot.mouseMove(location.x, location.y);
-                robot.mousePress(mouseInfo.getButton());
-                robot.mouseRelease(mouseInfo.getButton());
+                robot.mousePress(InputEvent.getMaskForButton(mouseInfo.getButton()));
+                robot.mouseRelease(InputEvent.getMaskForButton(mouseInfo.getButton()));
             }
             case PRESSED -> {
                 robot.mouseMove(location.x, location.y);
-                robot.mousePress(mouseInfo.getButton());
+                robot.mousePress(InputEvent.getMaskForButton(mouseInfo.getButton()));
             }
             case RELEASED -> {
-                robot.mouseRelease(mouseInfo.getButton());
+                robot.mouseRelease(InputEvent.getMaskForButton(mouseInfo.getButton()));
             }
             case DRAGGED -> {
-                robot.mousePress(mouseInfo.getButton());
+                robot.mousePress(InputEvent.getMaskForButton(mouseInfo.getButton()));
                 robot.mouseMove(location.x, location.y);
             }
             case MOVED -> {
