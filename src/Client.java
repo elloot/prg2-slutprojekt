@@ -9,8 +9,12 @@ public class Client {
     private ScreenListener screenListener;
     private Thread listenerThread;
     private MouseInfoStreamer mouseStreamer;
+    private final int initialWidth;
+    private final int initialHeight;
 
-    public Client(int port, String ip) {
+    public Client(int port, String ip, int initialWidth, int initialHeight) {
+        this.initialWidth = initialWidth;
+        this.initialHeight = initialHeight;
         try {
             socket = new Socket(ip, port);
         } catch(IOException e) {
@@ -39,20 +43,29 @@ public class Client {
 
     public void updateScreen(ImageIcon im) {
         if (ui == null) {
-            ui = new ClientUI(im);
+            ui = new ClientUI(fitToSize(im, initialWidth, initialHeight));
             ui.getFrame().addMouseListener(mouseStreamer.getMouseListener());
             ui.getFrame().addMouseMotionListener(mouseStreamer.getMouseMotionListener());
         }
-        ui.updateScreen(resizeIcon(im));
+        ui.updateScreen(fitToSize(im, ui.getBounds().width, ui.getBounds().height));
     }
 
-    public ImageIcon resizeIcon(ImageIcon srcIco) {
-        int iconWidth = srcIco.getIconWidth();
-        int iconHeight = srcIco.getIconHeight();
+    private ImageIcon fitToSize(ImageIcon srcIco, int width, int height) {
+        Dimension newSize = calcSizeFromBounds(srcIco, width, height);
+        return new ImageIcon(ImageUtil.getScaledImage(srcIco.getImage(), newSize.width, newSize.height));
+    }
+
+    private Dimension calcSizeFromBounds(ImageIcon ico, int width, int height) {
+        int iconWidth = ico.getIconWidth();
+        int iconHeight = ico.getIconHeight();
         double aspectRatio = ((double) iconWidth)/((double)iconHeight);
-        int newWidth = ui.getBounds().width;
+        int newWidth = width;
         int newHeight = (int) (newWidth / aspectRatio);
-        return new ImageIcon(ImageUtil.getScaledImage(srcIco.getImage(), newWidth, newHeight));
+        if (height - newHeight < 0) {
+            newHeight = height;
+            newWidth = (int) (newHeight * aspectRatio);
+        }
+        return new Dimension(newWidth, newHeight);
     }
 
     public ImageIcon resize(ImageIcon im) {
