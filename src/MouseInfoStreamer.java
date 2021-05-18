@@ -84,6 +84,5 @@ class MouseMotionListener implements java.awt.event.MouseMotionListener {
     @Override
     public void mouseMoved(MouseEvent e) {
         mouseStreamer.sendMouseInfo(new MouseInfo(e, MouseEventType.MOVED));
-        System.out.println("Moved");
     }
 }
