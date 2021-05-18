@@ -73,7 +73,6 @@ public class Server {
             }
             case MOVED -> {
                 robot.mouseMove(location.x, location.y);
-                System.out.println("Moved on server");
             }
         }
     }
