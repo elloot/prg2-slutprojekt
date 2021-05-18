@@ -24,7 +24,7 @@ public class ClientUI {
     }
 
     public Rectangle getBounds() {
-        return frame.getBounds();
+        return panel.getBounds();
     }
 
     public JFrame getFrame() {
