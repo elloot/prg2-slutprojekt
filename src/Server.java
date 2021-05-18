@@ -69,7 +69,7 @@ public class Server {
                 robot.mouseRelease(InputEvent.getMaskForButton(mouseInfo.getButton()));
             }
             case DRAGGED -> {
-                robot.mousePress(InputEvent.getMaskForButton(mouseInfo.getButton()));
+                robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
                 robot.mouseMove(location.x, location.y);
             }
             case MOVED -> {
