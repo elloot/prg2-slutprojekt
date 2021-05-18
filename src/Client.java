@@ -44,8 +44,8 @@ public class Client {
     public void updateScreen(ImageIcon im) {
         if (ui == null) {
             ui = new ClientUI(fitToSize(im, initialWidth, initialHeight));
-            ui.getFrame().addMouseListener(mouseStreamer.getMouseListener());
-            ui.getFrame().addMouseMotionListener(mouseStreamer.getMouseMotionListener());
+            ui.getPanel().addMouseListener(mouseStreamer.getMouseListener());
+            ui.getPanel().addMouseMotionListener(mouseStreamer.getMouseMotionListener());
         }
         ui.updateScreen(fitToSize(im, ui.getBounds().width, ui.getBounds().height));
     }
