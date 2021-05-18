@@ -19,7 +19,7 @@ public class ClientUI {
         frame.getContentPane().add(panel);
         frame.setLocationRelativeTo(null);
         frame.pack();
-        frame.addComponentListener(new ResizeListener());
+        // frame.addComponentListener(new ResizeListener());
         frame.setVisible(true);
     }
 
