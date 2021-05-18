@@ -12,6 +12,9 @@ public class ClientUI {
         panel = new JPanel();
         screen = new ImageLabel(image);
         screen.setLocation(0, 0);
+        screen.setSize(image.getIconWidth(), image.getIconHeight());
+        screen.setHorizontalAlignment(SwingConstants.CENTER);
+        screen.setVerticalAlignment(SwingConstants.CENTER);
         panel.add(screen);
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
