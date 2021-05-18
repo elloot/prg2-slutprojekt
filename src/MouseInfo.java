@@ -1,18 +1,21 @@
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.Serializable;
 
-public class MouseInfo {
+public class MouseInfo implements Serializable {
     private final MouseEventType eventType;
     private final Rectangle screenBounds;
-    private final Point clickLocation;
-    private final Point mappedClickLocation;
+    private final Point location;
+    private final Point locationFromEdge;
+    private final int button;
 
     public MouseInfo(MouseEvent e, MouseEventType eventType) {
         this.eventType = eventType;
         screenBounds = e.getComponent().getBounds();
-        clickLocation = e.getPoint();
-        mappedClickLocation = new Point((clickLocation.x / screenBounds.width) * screenBounds.width,
-                (clickLocation.y / screenBounds.height) * screenBounds.height);
+        location = e.getPoint();
+        locationFromEdge = new Point((location.x / screenBounds.width) * screenBounds.width,
+                (location.y / screenBounds.height) * screenBounds.height);
+        button = e.getButton();
     }
 
     public MouseEventType getEventType() {
@@ -23,11 +26,15 @@ public class MouseInfo {
         return screenBounds;
     }
 
-    public Point getClickLocation() {
-        return clickLocation;
+    public Point getLocation() {
+        return location;
     }
 
-    public Point getMappedClickLocation() {
-        return mappedClickLocation;
+    public Point getLocationFromEdge() {
+        return locationFromEdge;
+    }
+
+    public int getButton() {
+        return button;
     }
 }
