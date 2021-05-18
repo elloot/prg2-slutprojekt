@@ -52,8 +52,8 @@ public class Server {
     }
 
     public void handleMouseEvent(MouseInfo mouseInfo) {
-        Point location = new Point((int) mouseInfo.getxFromEdge() * screenSize.width, (int)
-        mouseInfo.getyFromEdge() * screenSize.height);
+        Point location = new Point((int) (mouseInfo.getxFromEdge() * (double) screenSize.width), (int)
+                (mouseInfo.getyFromEdge() * (double) screenSize.height));
         System.out.println("A" + mouseInfo.getxFromEdge() + ' ' + mouseInfo.getyFromEdge());
         System.out.println(location.x + " " + location.y);
         switch (mouseInfo.getEventType()) {
