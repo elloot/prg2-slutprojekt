@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -11,6 +10,8 @@ public class Server {
     private Thread streamerThread;
     private Robot robot;
     private Dimension screenSize;
+    private Thread mouseThread;
+    private MouseInfoListener mouseInfoListener;
 
     public Server(int port) {
         try {
@@ -36,21 +37,45 @@ public class Server {
             e.printStackTrace();
             System.exit(0);
         }
+        try {
+            mouseInfoListener = new MouseInfoListener(socket.getInputStream(), this);
+        } catch (IOException e) {
+            System.out.println("Failed to get input stream, exiting");
+            e.printStackTrace();
+            System.exit(0);
+        }
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         streamerThread = new Thread(screenStreamer);
         streamerThread.start();
+        mouseThread = new Thread(mouseInfoListener);
+        mouseThread.start();
     }
 
-    public void handleMouseMove(MouseEvent e) {
-        Rectangle clientBounds = e.getComponent().getBounds();
-        Point clickLocation = e.getPoint();
-        Point mappedClick = new Point((clickLocation.x / clientBounds.width) * screenSize.width,
-                (clickLocation.y / clientBounds.height) * screenSize.height);
-        robot.mouseMove(mappedClick.x, mappedClick.y);
-        if (e.getClickCount() > 0) {
-            robot.mousePress(e.getButton());
-        } else {
-            robot.mouseRelease(e.getButton());
+    public void handleMouseMove(MouseInfo mouseInfo) {
+        Point locationFromEdge = mouseInfo.getLocationFromEdge();
+        Point location = new Point(locationFromEdge.x * screenSize.width, locationFromEdge.y * screenSize.height);
+        System.out.println("Handling event");
+        switch (mouseInfo.getEventType()) {
+            case CLICKED -> {
+                robot.mouseMove(location.x, location.y);
+                robot.mousePress(mouseInfo.getButton());
+                robot.mouseRelease(mouseInfo.getButton());
+            }
+            case PRESSED -> {
+                robot.mouseMove(location.x, location.y);
+                robot.mousePress(mouseInfo.getButton());
+            }
+            case RELEASED -> {
+                robot.mouseRelease(mouseInfo.getButton());
+            }
+            case DRAGGED -> {
+                robot.mousePress(mouseInfo.getButton());
+                robot.mouseMove(location.x, location.y);
+            }
+            case MOVED -> {
+                robot.mouseMove(location.x, location.y);
+                System.out.println("Moved on server");
+            }
         }
     }
 }
