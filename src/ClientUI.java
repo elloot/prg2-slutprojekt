@@ -16,8 +16,8 @@ public class ClientUI {
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(panel);
-        frame.setLocationRelativeTo(null);
         frame.pack();
+        frame.setLocationRelativeTo(null);
         // frame.addComponentListener(new ResizeListener());
         frame.setVisible(true);
     }
