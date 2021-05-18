@@ -6,15 +6,16 @@ public class MouseInfo implements Serializable {
     private final MouseEventType eventType;
     private final Rectangle screenBounds;
     private final Point location;
-    private final Point locationFromEdge;
+    private final double xFromEdge;
+    private final double yFromEdge;
     private final int button;
 
     public MouseInfo(MouseEvent e, MouseEventType eventType) {
         this.eventType = eventType;
         screenBounds = e.getComponent().getBounds();
         location = e.getPoint();
-        locationFromEdge = new Point((location.x / screenBounds.width),
-                (location.y / screenBounds.height));
+        xFromEdge = (location.x / screenBounds.width);
+        yFromEdge = (location.y / screenBounds.height);
         button = e.getButton();
     }
 
@@ -30,8 +31,12 @@ public class MouseInfo implements Serializable {
         return location;
     }
 
-    public Point getLocationFromEdge() {
-        return locationFromEdge;
+    public double getxFromEdge() {
+        return xFromEdge;
+    }
+
+    public double getyFromEdge() {
+        return yFromEdge;
     }
 
     public int getButton() {
