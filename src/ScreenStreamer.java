@@ -75,7 +75,8 @@ public class ScreenStreamer implements Runnable {
 
     private void sendScreen(ImageIcon imageIcon) throws IOException {
         try {
-            out.writeObject(ImageUtil.getScaledImage(imageIcon.getImage(), clientScreenSize.width, clientScreenSize.height));
+            out.writeObject(new ImageIcon(ImageUtil.getScaledImage(imageIcon.getImage(), clientScreenSize.width,
+                    clientScreenSize.height)));
             out.flush();
             out.reset();
         } catch (SocketException e) {
