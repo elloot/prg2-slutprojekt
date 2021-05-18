@@ -20,9 +20,9 @@ public class MouseInfoStreamer {
         mouseMotionListener = new MouseMotionListener(this);
     }
 
-    void sendMouseInfo(MouseEvent e) {
+    void sendMouseInfo(MouseInfo mi) {
         try {
-            out.writeObject(e);
+            out.writeObject(mi);
             out.flush();
             out.reset();
         } catch (IOException ioException) {
@@ -49,26 +49,24 @@ class MouseListener implements java.awt.event.MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        mouseStreamer.sendMouseInfo(new MouseInfo(e, MouseEventType.CLICKED));
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+        mouseStreamer.sendMouseInfo(new MouseInfo(e, MouseEventType.PRESSED));
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        mouseStreamer.sendMouseInfo(new MouseInfo(e, MouseEventType.RELEASED));
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
+    public void mouseEntered(MouseEvent e) {}
 
     @Override
-    public void mouseExited(MouseEvent e) {
-    }
+    public void mouseExited(MouseEvent e) {}
 }
 
 class MouseMotionListener implements java.awt.event.MouseMotionListener {
@@ -80,10 +78,12 @@ class MouseMotionListener implements java.awt.event.MouseMotionListener {
 
     @Override
     public void mouseDragged(MouseEvent e) {
-
+        mouseStreamer.sendMouseInfo(new MouseInfo(e, MouseEventType.DRAGGED));
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
+        mouseStreamer.sendMouseInfo(new MouseInfo(e, MouseEventType.MOVED));
+        System.out.println("Moved");
     }
 }
