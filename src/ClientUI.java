@@ -30,6 +30,10 @@ public class ClientUI {
         return frame;
     }
 
+    public JPanel getPanel() {
+        return panel;
+    }
+
     public void updateScreen(ImageIcon im) {
         screen.setImage(im);
         screen.repaint();
