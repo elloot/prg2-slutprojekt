@@ -12,9 +12,8 @@ import java.net.SocketException;
 
 public class ScreenStreamer implements Runnable {
     private ObjectOutputStream out;
-    private Rectangle screenBounds;
+    private final Rectangle screenBounds;
     private Robot robot;
-    private int fps = 60;
     private boolean running;
     private Rectangle clientScreenSize;
 
@@ -39,6 +38,7 @@ public class ScreenStreamer implements Runnable {
     @Override
     public void run() {
         running = true;
+        int fps = 60;
         double fpsInterval = 1000000000.0 / fps;
         double delta = 0;
         long lastTime = System.nanoTime();
@@ -57,6 +57,7 @@ public class ScreenStreamer implements Runnable {
                     sendScreen(imageIcon);
                 } catch (IOException e) {
                     errorSend(e);
+                    break;
                 }
                 delta--;
             }
