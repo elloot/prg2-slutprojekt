@@ -7,7 +7,6 @@ public class Client {
     private Socket socket;
     private ClientUI ui;
     private ScreenListener screenListener;
-    private Thread listenerThread;
     private MouseInfoStreamer mouseStreamer;
     private final int initialWidth;
     private final int initialHeight;
@@ -37,7 +36,7 @@ public class Client {
             e.printStackTrace();
             System.exit(0);
         }
-        listenerThread = new Thread(screenListener);
+        Thread listenerThread = new Thread(screenListener);
         listenerThread.start();
     }
 
