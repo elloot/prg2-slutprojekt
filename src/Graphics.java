@@ -6,18 +6,14 @@ import java.awt.image.DataBufferInt;
 import java.util.Arrays;
 
 public class Graphics extends Canvas {
-    private final int width;
-    private final int height;
     private final BufferedImage image;
     private final int[] pixels;
 
     public Graphics(int w, int h) {
-        this.width = w;
-        this.height = h;
         image = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
         pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 
-        Dimension size = new Dimension(width, height);
+        Dimension size = new Dimension(w, h);
         setPreferredSize(size);
         JFrame frame = new JFrame();
         String title = "Totally not a TeamViewer ripoff";
