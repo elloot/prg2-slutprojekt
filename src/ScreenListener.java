@@ -1,5 +1,7 @@
 import javax.swing.*;
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.net.SocketException;
 
 public class ScreenListener implements Runnable {
@@ -23,7 +25,7 @@ public class ScreenListener implements Runnable {
         running = true;
         Object im;
         ImageIcon screenShot;
-        while(running) {
+        while (running) {
             try {
                 im = in.readObject();
             } catch (SocketException e) {

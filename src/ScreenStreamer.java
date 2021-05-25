@@ -1,5 +1,3 @@
-import org.w3c.dom.css.Rect;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -35,6 +33,7 @@ public class ScreenStreamer implements Runnable {
             System.exit(0);
         }
     }
+
     @Override
     public void run() {
         running = true;
@@ -50,7 +49,7 @@ public class ScreenStreamer implements Runnable {
 
             BufferedImage im;
             ImageIcon imageIcon;
-            while(delta >= 1) {
+            while (delta >= 1) {
                 try {
                     im = captureScreen();
                     imageIcon = compressToImageIcon(im);
@@ -95,11 +94,11 @@ public class ScreenStreamer implements Runnable {
         clientScreenSize = size;
     }
 
-    private ImageIcon compressToImageIcon (BufferedImage im) throws IOException {
+    private ImageIcon compressToImageIcon(BufferedImage im) throws IOException {
         return new ImageIcon(im);
     }
 
-    private byte[] compressToByteArray (BufferedImage im) throws IOException {
+    private byte[] compressToByteArray(BufferedImage im) throws IOException {
         ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
         ImageIO.write(im, "JPEG", byteOut);
         return byteOut.toByteArray();

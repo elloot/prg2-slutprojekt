@@ -63,10 +63,12 @@ class MouseListener implements java.awt.event.MouseListener {
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {
+    }
 
     @Override
-    public void mouseExited(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {
+    }
 }
 
 class MouseMotionListener implements java.awt.event.MouseMotionListener {

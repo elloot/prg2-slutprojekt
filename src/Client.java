@@ -16,7 +16,7 @@ public class Client {
         this.initialHeight = initialHeight;
         try {
             socket = new Socket(ip, port);
-        } catch(IOException e) {
+        } catch (IOException e) {
             System.out.println("Failed to connect to ip " + ip + " on port " + port);
             e.printStackTrace();
             System.exit(0);
@@ -57,7 +57,7 @@ public class Client {
     private Dimension calcSizeFromBounds(ImageIcon ico, int width, int height) {
         int iconWidth = ico.getIconWidth();
         int iconHeight = ico.getIconHeight();
-        double aspectRatio = ((double) iconWidth)/((double)iconHeight);
+        double aspectRatio = ((double) iconWidth) / ((double) iconHeight);
         int newWidth = width;
         int newHeight = (int) (newWidth / aspectRatio);
         if (height - newHeight < 0) {
