@@ -4,7 +4,7 @@ import java.io.ObjectInputStream;
 
 public class MouseInfoListener implements Runnable {
     private ObjectInputStream in;
-    private Server server;
+    private final Server server;
     private boolean running;
 
     public MouseInfoListener(InputStream i, Server s) {
