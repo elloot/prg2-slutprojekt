@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The main class that runs the client.
+ */
 public class ClientMain {
     public static void main(String[] args) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
