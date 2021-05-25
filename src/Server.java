@@ -5,18 +5,15 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-    private ServerSocket serverSocket;
     private Socket socket;
     private ScreenStreamer screenStreamer;
-    private Thread streamerThread;
     private Robot robot;
-    private Dimension screenSize;
-    private Thread mouseThread;
+    private final Dimension screenSize;
     private MouseInfoListener mouseInfoListener;
 
     public Server(int port) {
         try {
-            serverSocket = new ServerSocket(port);
+            ServerSocket serverSocket = new ServerSocket(port);
             socket = serverSocket.accept();
         } catch (IOException e) {
             System.out.println("Failed to connect on port " + port);
@@ -46,9 +43,9 @@ public class Server {
             System.exit(0);
         }
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        streamerThread = new Thread(screenStreamer);
+        Thread streamerThread = new Thread(screenStreamer);
         streamerThread.start();
-        mouseThread = new Thread(mouseInfoListener);
+        Thread mouseThread = new Thread(mouseInfoListener);
         mouseThread.start();
     }
 
@@ -66,16 +63,12 @@ public class Server {
                 robot.mouseMove(location.x, location.y);
                 robot.mousePress(InputEvent.getMaskForButton(mouseInfo.getButton()));
             }
-            case RELEASED -> {
-                robot.mouseRelease(InputEvent.getMaskForButton(mouseInfo.getButton()));
-            }
+            case RELEASED -> robot.mouseRelease(InputEvent.getMaskForButton(mouseInfo.getButton()));
             case DRAGGED -> {
                 robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
                 robot.mouseMove(location.x, location.y);
             }
-            case MOVED -> {
-                robot.mouseMove(location.x, location.y);
-            }
+            case MOVED -> robot.mouseMove(location.x, location.y);
         }
     }
 }
