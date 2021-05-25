@@ -63,7 +63,7 @@ public class Client {
             ui.getPanel().addMouseListener(mouseStreamer.getMouseListener());
             ui.getPanel().addMouseMotionListener(mouseStreamer.getMouseMotionListener());
         }
-        ui.updateScreen(fitToSize(im, ui.getBounds().width, ui.getBounds().height));
+        ui.updateScreen(fitToSize(im, ui.getPanelBounds().width, ui.getPanelBounds().height));
     }
 
     /**

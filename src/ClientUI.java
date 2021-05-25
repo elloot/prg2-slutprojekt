@@ -33,7 +33,7 @@ public class ClientUI {
     /**
      * @return The bounds of the panel containing the image of the server's screen.
      */
-    public Rectangle getBounds() {
+    public Rectangle getPanelBounds() {
         return panel.getBounds();
     }
 
