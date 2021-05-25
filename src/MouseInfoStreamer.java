@@ -5,8 +5,8 @@ import java.io.OutputStream;
 
 public class MouseInfoStreamer {
     private ObjectOutputStream out;
-    private MouseListener mouseListener;
-    private MouseMotionListener mouseMotionListener;
+    private final MouseListener mouseListener;
+    private final MouseMotionListener mouseMotionListener;
 
     public MouseInfoStreamer(OutputStream o) {
         try {
@@ -41,7 +41,7 @@ public class MouseInfoStreamer {
 }
 
 class MouseListener implements java.awt.event.MouseListener {
-    private MouseInfoStreamer mouseStreamer;
+    private final MouseInfoStreamer mouseStreamer;
 
     public MouseListener(MouseInfoStreamer m) {
         mouseStreamer = m;
@@ -70,7 +70,7 @@ class MouseListener implements java.awt.event.MouseListener {
 }
 
 class MouseMotionListener implements java.awt.event.MouseMotionListener {
-    private MouseInfoStreamer mouseStreamer;
+    private final MouseInfoStreamer mouseStreamer;
 
     public MouseMotionListener(MouseInfoStreamer m) {
         mouseStreamer = m;
