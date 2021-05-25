@@ -5,7 +5,7 @@ import java.net.SocketException;
 public class ScreenListener implements Runnable {
     private ObjectInputStream in;
     private boolean running;
-    private Client client;
+    private final Client client;
 
     public ScreenListener(InputStream i, Client c) {
         try {
