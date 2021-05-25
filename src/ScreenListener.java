@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.io.*;
+import java.net.SocketException;
 
 public class ScreenListener implements Runnable {
     private ObjectInputStream in;
@@ -25,6 +26,15 @@ public class ScreenListener implements Runnable {
         while(running) {
             try {
                 im = in.readObject();
+            } catch (SocketException e) {
+                if (e.getMessage().equals("Connection reset")) {
+                    System.out.println("Server disconnected, exiting");
+                    System.exit(0);
+                } else {
+                    System.out.println("Something went wrong with the connection to the server");
+                    e.printStackTrace();
+                }
+                im = null;
             } catch (ClassNotFoundException | IOException e) {
                 im = null;
                 System.out.println("Failed to read image from server, exiting");
