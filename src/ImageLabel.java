@@ -9,13 +9,6 @@ class ImageLabel extends JLabel {
         setSize(icon.getImage().getWidth(null), icon.getImage().getHeight(null));
     }
 
-    public ImageLabel() {
-        setIconTextGap(0);
-        setBorder(null);
-        setText(null);
-        setSize(100, 100);
-    }
-
     public void setImage(ImageIcon icon) {
         setIcon(icon);
         setSize(icon.getImage().getWidth(null), icon.getImage().getHeight(null));
