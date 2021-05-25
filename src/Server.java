@@ -51,8 +51,8 @@ public class Server {
 
     public void handleMouseEvent(MouseInfo mouseInfo) {
         screenStreamer.setClientScreenSize(mouseInfo.getScreenBounds());
-        Point location = new Point((int) (mouseInfo.getxFromEdge() * (double) screenSize.width), (int)
-                (mouseInfo.getyFromEdge() * (double) screenSize.height));
+        Point location = new Point((int) (mouseInfo.getXFromEdge() * (double) screenSize.width), (int)
+                (mouseInfo.getYFromEdge() * (double) screenSize.height));
         switch (mouseInfo.getEventType()) {
             case CLICKED -> {
                 robot.mouseMove(location.x, location.y);
