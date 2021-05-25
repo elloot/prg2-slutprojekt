@@ -4,9 +4,9 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 public class ClientUI {
-    private JPanel panel;
-    private ImageLabel screen;
-    private JFrame frame;
+    private final JPanel panel;
+    private final ImageLabel screen;
+    private final JFrame frame;
 
     public ClientUI(ImageIcon image) {
         panel = new JPanel();
