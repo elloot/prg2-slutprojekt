@@ -4,7 +4,12 @@ Elliot Duchek 01/06/2021
 
 ## Inledning
 
-Här beskriver du kortfattat arbetets syfte/mål, arbetssätt, genomförande.
+Syftet med arbetet var att skapa en TeamViewer-klon som låter en användare styra en annan användares dator. Den dator 
+som styrs skickar en 
+ström av bilder på datorns skärm som den styrande datorn tar emot och visar upp. Den styrande datorn skickar mus-information till den styrda datorn som översätter detta med Javas Robot-klass.
+
+Arbetssättet bestod i att skapa en idébeskrivning och sedan en planering från den beskrivningen. Under arbetets gång 
+följdes och uppdaterades denna planering.
 
 ## Bakgrund
 
