@@ -6,7 +6,6 @@ En TeamViewer-klon som låter en användare styra en annan användares dator. De
 
 ## Planering och dokumentation
 * [Planering](https://github.com/elloot/prg2-slutprojekt/projects/1)
-* [Klassdiagram](https://github.com/elloot/prg2-slutprojekt/blob/main/docs/class%20diagram.drawio)
 * [Flödesdiagram](https://github.com/elloot/prg2-slutprojekt/blob/main/docs/flowchart.drawio)
 * [JavaDoc](https://elloot.github.io/prg2-slutprojekt/javadoc/)
 * [Post mortem](https://github.com/elloot/prg2-slutprojekt/blob/main/docs/PM.md)
