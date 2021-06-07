@@ -54,21 +54,25 @@ public class Server {
         Point location = new Point((int) (mouseInfo.getXFromEdge() * (double) screenSize.width), (int)
                 (mouseInfo.getYFromEdge() * (double) screenSize.height));
         switch (mouseInfo.getEventType()) {
-            case CLICKED -> {
+            case CLICKED:
                 robot.mouseMove(location.x, location.y);
                 robot.mousePress(InputEvent.getMaskForButton(mouseInfo.getButton()));
                 robot.mouseRelease(InputEvent.getMaskForButton(mouseInfo.getButton()));
-            }
-            case PRESSED -> {
+                break;
+            case PRESSED:
                 robot.mouseMove(location.x, location.y);
                 robot.mousePress(InputEvent.getMaskForButton(mouseInfo.getButton()));
-            }
-            case RELEASED -> robot.mouseRelease(InputEvent.getMaskForButton(mouseInfo.getButton()));
-            case DRAGGED -> {
+                break;
+            case RELEASED:
+                robot.mouseRelease(InputEvent.getMaskForButton(mouseInfo.getButton()));
+                break;
+            case DRAGGED:
                 robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
                 robot.mouseMove(location.x, location.y);
-            }
-            case MOVED -> robot.mouseMove(location.x, location.y);
+                break;
+            case MOVED:
+                robot.mouseMove(location.x, location.y);
+                break;
         }
     }
 }
