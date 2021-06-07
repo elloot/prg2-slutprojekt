@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="prg2-slutprojekt:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/prg2_slutprojekt_jar</output-path>
-    <root id="archive" name="prg2-slutprojekt.jar">
+  <artifact type="jar" name="GoodKontrol:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GoodKontrol_jar</output-path>
+    <root id="archive" name="GoodKontrol.jar">
       <element id="module-output" name="prg2-slutprojekt" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/imgscalr/imgscalr-lib/4.2/imgscalr-lib-4.2.jar" path-in-jar="/" />
     </root>
